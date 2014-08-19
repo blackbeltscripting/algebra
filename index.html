@@ -1,66 +1,3 @@
-<?php
-/*
- *	The Algebra Project
- *		No more Algebraec issues.
- */
-
-
-$move_key = 1;
-
-
-$e = array(
-	"L" => array(
-		array("operator" => "add", "operand" => array(0 => 5))
-	),
-	"R" => array(
-		array("operator" => "add", "operand" => array(1 => 3, 2 => 2))
-	)
-);
-function isolate($move_key, $e) {
-	//	Let's make it 0 on the left side
-	print_r($e);
-	$e = remove_left($e);
-	echo '<br>';
-	print_r($e);
-	//	Now we move (1=>3) to the left...
-}
-function remove_left($e) {
-	//	Single-layered evaluation.
-	foreach($e["L"] as $key => $val) {
-		if(array_key_exists("operator", $val)) {
-			$inversed = inverse_operation($val);
-			array_push($e["R"], $val);
-			unset($e["L"][$key]);
-			return $e;
-		}
-	}
-}
-
-isolate($move_key, $e);
-
-function inverse_operation($val) {
-	if($val["operator"] == "add") {
-		foreach($val["operand"] as $key => $op) {
-			$val["operand"][$key] = $op * -1;
-		}
-	}
-	return $val;
-}
-
-
-class operation {
-	function __construct() {
-		$this->operand = "add";
-		$this->operation = array(5, 4);
-	}
-	function inverse() {
-
-	}
-	
-}
-
-?>
-
 <html>
 <head>
 	<title>Algebra.com</title>
@@ -71,15 +8,15 @@ class operation {
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("h1, sup").mouseenter(function() {
-				$(this).addClass("highlight", 200);
-			}).mouseleave(function() {
-				$(this).removeClass("highlight", 600);
-			}).click(function() {
+			$("h1, sup").dblclick(function() {
 				$("explain").empty();
 				$("explain").html(
 					$("#e-"+$(this).attr("id")).html()
 				);
+			});
+			$("#equation_wrap").sortable({
+				axis: 'x',
+				opacity: 0.5,
 			});
 		});
 	</script>
@@ -89,8 +26,8 @@ class operation {
 			display: inline-block;
 			cursor: pointer;
 			font-weight: bold;
+			margin: 0px;
 		}
-
 		body {
 			text-align: center;
 		}
@@ -106,11 +43,12 @@ class operation {
 	</style>
 </head>
 <body>
-<br>
-	<h1 id="energy">E</h1>
-	<equals> = </equals> 
-	<h1 id="mass">m</h1>
-	<h1 id="celeritas">c</h1><sup>2</sup>
+	<div id="equation_wrap">
+		<h1 id="energy">E</h1>
+		<equals> = </equals> 
+		<h1 id="mass">m</h1>
+		<h1 id="celeritas">c</h1><sup>2</sup>
+	</div>
 	<explain>
 	Explanation
 	</explain>
