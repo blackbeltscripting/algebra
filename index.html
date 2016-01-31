@@ -1,68 +1,83 @@
 <html>
-<head>
-	<title>Algebra.com</title>
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-	<meta http-equiv="Content-Type" content="text/html">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("h1, sup").dblclick(function() {
-				$("explain").empty();
-				$("explain").html(
-					$("#e-"+$(this).attr("id")).html()
-				);
+	<head>
+		<title>Algebra.com</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+		<meta http-equiv="Content-Type" content="text/html">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+			<script type="text/javascript">
+			$(document).ready(function() {
+				$("h1, sup").dblclick(function() {
+					$("explain").empty();
+					$("explain").html(
+							$("#e-"+$(this).attr("id")).html()
+							);
+				});
+				$("#equation_wrap").sortable({
+					axis: 'x',
+					opacity: 0.5,
+				});
 			});
-			$("#equation_wrap").sortable({
-				axis: 'x',
-				opacity: 0.5,
-			});
-		});
-	</script>
-	<style>
-		h1, equals, sup {
-			font-size: 32px;
-			display: inline-block;
-			cursor: pointer;
-			font-weight: bold;
-			margin: 0px;
-		}
-		body {
-			text-align: center;
-		}
-		explain {
-			display: block;
-		}
-		all_explanations {
-			display: none;
-		}
-		.highlight {
-			color: red;
-		}
-	</style>
-</head>
-<body>
-	<div id="equation_wrap">
-		<h1 id="energy">E</h1>
-		<equals> = </equals> 
-		<h1 id="mass">m</h1>
-		<h1 id="celeritas">c</h1><sup>2</sup>
-	</div>
-	<explain>
-	Explanation
-	</explain>
-	<all_explanations>
-		<e id="e-energy">
-			<i>E</i> stands for <i>Energy</i>.
-		</e>
-		<e id="e-mass">
-			<i>m</i> stands for <i>mass</i>. It is measured in Kg (Kilograms).
-		</e>
-		<e id="e-celeritas">
-			<i>c</i> stands for <i>celeritas</i>. It is the speed of light.
-		</e>
-	</all_explanations>
-</body>
+		</script>
+		<style>
+			h1, equals, sup {
+				font-size: 32px;
+				display: inline-block;
+				cursor: pointer;
+				font-weight: bold;
+				margin: 0px;
+			}
+			body {
+				text-align: center;
+			}
+			slogan {
+				font-size: 45px;
+				display: block;
+				margin: 25px auto 50px;
+			}
+			explain {
+				display: block;
+			}
+			all_explanations {
+				display: none;
+			}
+			.highlight {
+				color: red;
+			}
+			#equation_wrap h1 {
+				width: 30px;
+				text-align: center;
+			}
+			#equation_wrap h1:hover {
+				border: 2px dashed;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="top">
+			<slogan>Algebra</slogan>
+		</div>
+		<div id="equation_wrap">
+			<h1 id="energy">E</h1>
+			<equals> = </equals>
+			<h1 id="mass">m</h1>
+			<h1 id="celeritas">c</h1><sup>2</sup>
+		</div>
+		<explain>
+			Explanation
+		</explain>
+		<all_explanations>
+			<e id="e-energy">
+				<i>E</i> stands for <i>Energy</i>.
+			</e>
+			<e id="e-mass">
+				<i>m</i> stands for <i>mass</i>. It is measured in Kg (Kilograms).
+			</e>
+			<e id="e-celeritas">
+				<i>c</i> stands for <i>celeritas</i>. It is the speed of light.
+			</e>
+		</all_explanations>
+	</body>
 </html>
 </html>
