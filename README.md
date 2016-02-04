@@ -1,4 +1,4 @@
-# algebra
+# Algebra
 
 This Project is intended to create a simple way of re-arranging equations using the algebraic method with drag and drop functionality of javascript and HTML5.
 
